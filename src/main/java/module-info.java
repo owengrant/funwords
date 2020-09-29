@@ -12,6 +12,7 @@ module owen.funwords {
     requires com.jfoenix;
     requires java.logging;
     
+    exports owen.funwords;
     opens owen.funwords;
     opens owen.funwords.controller;
 }
