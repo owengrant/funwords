@@ -1,0 +1,3 @@
+#!/bin/sh
+JLINK_VM_OPTIONS=
+bin/java $JLINK_VM_OPTIONS -m owen.funwords/owen.funwords.App "$@"
