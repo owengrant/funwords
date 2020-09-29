@@ -9,6 +9,7 @@ module owen.funwords {
     requires javafx.graphics;
     requires javafx.base;
     requires javafx.fxml;
+    requires javafx.media;
     requires com.jfoenix;
     requires java.logging;
     

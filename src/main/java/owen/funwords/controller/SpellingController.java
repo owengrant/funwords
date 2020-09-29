@@ -20,6 +20,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import owen.funwords.App;
 import owen.funwords.model.Word;
 import owen.funwords.model.WordBank;
@@ -35,6 +38,9 @@ public class SpellingController implements Initializable{
     
     @FXML
     private JFXButton showWordButton;
+    
+    @FXML
+    private JFXButton spellBtn;
 
     @FXML
     private JFXButton nextWordButton;
@@ -47,6 +53,9 @@ public class SpellingController implements Initializable{
 
     @FXML
     private Text word;
+    
+    @FXML
+    private MediaView speller;
 
     
     @Override
@@ -77,6 +86,19 @@ public class SpellingController implements Initializable{
     @FXML
     private void back(MouseEvent event) throws IOException {
         App.setRoot("landing");
+    }
+    
+    
+    @FXML
+    private void spellWord(MouseEvent event) {
+        var audio = new Media(getTask().getSpelling().toURI().toString());
+        var player = new MediaPlayer(audio);
+        player.setOnReady(() -> {
+               player.play();
+               showWord(null);
+        });
+        this.speller.setMediaPlayer(player);
+        //player.play();
     }
     
     private void changeWord() {

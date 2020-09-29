@@ -24,12 +24,14 @@ public class WordBank {
                     .forEach(wordFolder -> {
                         var word = new Word();
                         Stream.of(wordFolder.listFiles()).forEach(wordFile -> {
-                            if(wordFile.getName().endsWith(".png") || wordFile.getName().endsWith(".jpg") || wordFile.getName().endsWith(".jpeg")) {
+                            var name = wordFile.getName();
+                            if(name.endsWith(".png") || name.endsWith(".jpg") || name.endsWith(".jpeg")) {
                                 word.setWord(wordFile.getName());
                                 word.setImage(wordFile);
-                                words.add(word);
-                            }
+                            } else if(name.endsWith(".mp3")) 
+                                word.setSpelling(wordFile);
                         });
+                        words.add(word);
                     });
             
         }).start();
